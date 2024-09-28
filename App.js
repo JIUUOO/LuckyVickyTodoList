@@ -1,12 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { useEffect, useState } from "react";
+import { Animated, StyleSheet, Text, View } from "react-native";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 
 import IntroScreen from "./screens/IntroScreen";
 import ContentScreen from "./screens/ContentScreen";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const fadeAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     setTimeout(() => {
@@ -14,10 +15,18 @@ export default function App() {
     }, 1000);
   }, []);
 
+  useLayoutEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeAnim]);
+
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
       {isLoading ? <IntroScreen /> : <ContentScreen />}
-    </View>
+    </Animated.View>
   );
 }
 
