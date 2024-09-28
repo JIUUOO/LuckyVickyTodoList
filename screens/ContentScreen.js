@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 
-function TodoListScreen() {
+function ContentScreen() {
   return (
     <View style={styles.container}>
       <Text>할 일이 {1}개 남았어요</Text>
@@ -14,4 +14,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TodoListScreen;
+export default ContentScreen;

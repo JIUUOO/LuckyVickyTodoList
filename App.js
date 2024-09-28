@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { useEffect, useState } from "react";
 
 import IntroScreen from "./screens/IntroScreen";
-import TodoListScreen from "./screens/TodoListScreen";
+import ContentScreen from "./screens/ContentScreen";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {isLoading ? <IntroScreen /> : <TodoListScreen />}
+      {isLoading ? <IntroScreen /> : <ContentScreen />}
     </View>
   );
 }
