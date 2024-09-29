@@ -2,7 +2,6 @@ import { StatusBar } from "expo-status-bar";
 import { Animated, StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { useEffect, useState, useRef } from "react";
 
-import IntroScreen from "./screens/IntroScreen";
 import ContentScreen from "./screens/ContentScreen";
 
 export default function App() {
@@ -11,7 +10,7 @@ export default function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      // setIsLoading(false);
+      setIsLoading(false);
     }, 1000);
   }, []);
 
@@ -28,7 +27,7 @@ export default function App() {
       <StatusBar style="dark" />
       <SafeAreaView style={styles.container}>
         <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
-          <IntroScreen />
+          <ContentScreen />
         </Animated.View>
       </SafeAreaView>
     </>
