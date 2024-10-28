@@ -1,5 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { Animated, StyleSheet, Text, View, SafeAreaView } from "react-native";
+import {
+  Animated,
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Platform,
+} from "react-native";
 import { useEffect, useState, useRef } from "react";
 import GoalsContextProvider from "./context/goals-context";
 
@@ -39,7 +46,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: Platform.select({ ios: 0, android: 6 }),
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#F6FCDF",
   },
 });

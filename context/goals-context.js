@@ -2,7 +2,8 @@ import { createContext, useState } from "react";
 
 export const GoalsContext = createContext({
   goals: [],
-  addGoal: (id) => {},
+  addGoal: (item) => {},
+  modifyGoal: (id, content) => {},
 });
 
 function GoalsContextProvider({ children }) {
@@ -12,9 +13,16 @@ function GoalsContextProvider({ children }) {
     setGoalItem((currentGoals) => [...currentGoals, item]);
   }
 
+  function modifyGoal(id, content) {
+    const goals = goalItem;
+    goals.map((goal) => id === goal.id && (goal.content = content));
+    setGoalItem(goals);
+  }
+
   const value = {
     goals: goalItem,
     addGoal: addGoal,
+    modifyGoal: modifyGoal,
   };
 
   return (

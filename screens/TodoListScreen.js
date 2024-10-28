@@ -7,8 +7,11 @@ import GoalItem from "../components/GoalItem";
 function TodoListScreen() {
   const { goals, addGoal } = useContext(GoalsContext);
 
-  function startAddGoalHanlder() {
-    addGoal("asd");
+  function addGoalHanlder() {
+    addGoal({
+      id: goals.length,
+      content: "",
+    });
   }
 
   return (
@@ -19,15 +22,12 @@ function TodoListScreen() {
       </View>
       <FlatList
         data={goals}
-        keyExtractor={(item) => item.key}
-        renderItem={({ item }) => <GoalItem id={item.key} text={item.task} />}
+        renderItem={({ item }) => <GoalItem id={item.id} />}
+        keyExtractor={(item) => item.id}
         alwaysBounceVertical={false}
       />
-      <View>
-        <Button
-          title={"새로운 할 일 추가하기!"}
-          onPress={startAddGoalHanlder}
-        ></Button>
+      <View style={{ alignItems: "flex-start" }}>
+        <Button title={"새로 할 일이얌!"} onPress={addGoalHanlder}></Button>
       </View>
     </View>
   );
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 2,
-    paddingHorizontal: 16,
+    paddingLeft: 16,
   },
   text: {
     fontSize: 30,
