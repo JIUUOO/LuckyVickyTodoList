@@ -10,9 +10,10 @@ function GoalItem({ text }) {
 
 const styles = StyleSheet.create({
   wrap: {
-    marginVertical: 10,
+    marginVertical: 4,
     borderColor: "#ccc",
-    borderWidth: 1,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
     padding: 8,
     color: "black",
   },

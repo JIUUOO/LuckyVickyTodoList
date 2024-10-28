@@ -1,8 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { Animated, StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { useEffect, useState, useRef } from "react";
+import GoalsContextProvider from "./context/goals-context";
 
-import ContentScreen from "./screens/ContentScreen";
+import TodoListScreen from "./screens/TodoListScreen";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,11 +26,13 @@ export default function App() {
   return (
     <>
       <StatusBar style="dark" />
-      <SafeAreaView style={styles.container}>
-        <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
-          <ContentScreen />
-        </Animated.View>
-      </SafeAreaView>
+      <GoalsContextProvider>
+        <SafeAreaView style={styles.container}>
+          <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
+            <TodoListScreen />
+          </Animated.View>
+        </SafeAreaView>
+      </GoalsContextProvider>
     </>
   );
 }
